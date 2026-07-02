@@ -1,0 +1,45 @@
+{
+    "name": "OpenHands",
+    "slug": "openhands",
+    "categories": [
+        20
+    ],
+    "date_created": "2026-07-02",
+    "type": "ct",
+    "updateable": true,
+    "privileged": false,
+    "has_arm": false,
+    "interface_port": 8000,
+    "documentation": "https://docs.openhands.dev/",
+    "website": "https://www.openhands.dev/",
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/openhands.webp",
+    "description": "OpenHands Agent Canvas is an AI software-development agent that reads and writes files, runs shell commands, and edits code. This installs the Agent Canvas CLI in full-canvas public mode, serving both the web UI and the agent backend.",
+    "install_methods": [
+        {
+            "type": "default",
+            "script": "ct/openhands.sh",
+            "config_path": "/opt/openhands/agent-canvas.env",
+            "resources": {
+                "cpu": 2,
+                "ram": 4096,
+                "hdd": 16,
+                "os": "Debian",
+                "version": "13"
+            }
+        }
+    ],
+    "default_credentials": {
+        "username": null,
+        "password": null
+    },
+    "notes": [
+        {
+            "text": "The agent server can read/write the container filesystem, run shell commands, and access the network. Treat the container as trusted infrastructure and do not expose port 8000 directly to the internet without a reverse proxy, VPN, or access-control layer.",
+            "type": "warning"
+        },
+        {
+            "text": "Public mode requires a backend API key. A random LOCAL_BACKEND_API_KEY is generated at install and stored in /opt/openhands/agent-canvas.env; enter it in the browser when opening the Canvas. For remote access, put an ngrok tunnel, nginx+TLS reverse proxy, or OAuth gate in front of port 8000.",
+            "type": "info"
+        }
+    ]
+}
